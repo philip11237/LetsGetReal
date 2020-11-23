@@ -46,6 +46,8 @@ public class RationalNumber extends RealNumber {
   *@return true when the RationalNumbers have the same numerators and denominators, false otherwise.
   */
   public boolean equals(RationalNumber other){
+    other.reduce();
+    this.reduce();
     return ((other.numerator==this.numerator)&& (other.denominator==this.numerator));
   }
 
@@ -53,6 +55,7 @@ public class RationalNumber extends RealNumber {
   *@return the value expressed as "3/4" or "8/3"
   */
   public String toString(){
+    this.reduce();
     return this.numerator+"/"+this.denominator;
   }
 
@@ -67,10 +70,17 @@ public class RationalNumber extends RealNumber {
 Divide a by b and get the remainder, r. If r=0, report b as the GCD of a and b.
 Replace a by b and replace b by r. Return to the previous step.*/
     //sites.math.rutgers.edu/~greenfie/gs2004/euclid.html
-
-
+    if (a<0){
+      a=Math.abs(a);
+    }
+    if (b<0){
+      b=Math.abs(b);
+    }
       if (a<b){
         return gcd(b,a);
+      }
+      if (b==0){
+        return 0;
       }
       int r=a % b;
       if (r==0)
@@ -87,7 +97,15 @@ Replace a by b and replace b by r. Return to the previous step.*/
   *reduced after construction.
   */
   private void reduce(){
+
+    if (denominator<0){
+      denominator*=-1;
+      numerator*=-1;
+    }
     int gcd=gcd (numerator,denominator);
+    if (gcd==0){
+      return;
+    }
     numerator=numerator/gcd;
     denominator=denominator/gcd;
   }
@@ -124,7 +142,7 @@ Replace a by b and replace b by r. Return to the previous step.*/
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return RationalNumber answer=new RationalNumber ( (this.numerator*other.denominator)- this.denominator*other.numerator,(this.denominator*other.denominator));
+     RationalNumber answer=new RationalNumber ( (this.numerator*other.denominator) - this.denominator*other.numerator,(this.denominator*other.denominator));
       answer.reduce();
       return answer;
   }
