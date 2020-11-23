@@ -124,6 +124,8 @@ Replace a by b and replace b by r. Return to the previous step.*/
   *Return a new RationalNumber that this minus the other
   */
   public RationalNumber subtract(RationalNumber other){
-    return null;
+    return RationalNumber answer=new RationalNumber ( (this.numerator*other.denominator)- this.denominator*other.numerator,(this.denominator*other.denominator));
+      answer.reduce();
+      return answer;
   }
 }
