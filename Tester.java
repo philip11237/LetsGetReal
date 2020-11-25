@@ -1,6 +1,6 @@
 //steven test cases
 public class Tester {
-    public static void main (String[]args){
+  /*  public static void main (String[]args){
 
         //RealNumber only tests
         System.out.println();
@@ -81,5 +81,5 @@ public class Tester {
         System.out.println("Multiplying 1.5 and 3/2. Expected 2.25 | Output " + woj.multiply(sham));
         System.out.println("Dividing 1.5 by 3/2. Expected 1.0 | Output " + woj.divide(sham));
         //
-    }
+    } */
 }
